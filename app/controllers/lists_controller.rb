@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   end
 
   def create #データを受け取り新規登録するためのインスタンス作成
-    @list = List.new(list_params) 
+    @list = List.new(list_params)
     if @list.save #データをデータベースに保存するためのsaveメソッド実行
       redirect_to list_path(@list.id)
     else render :new #アクション名で、同じコントローラ内の別アクションのViewを表示
@@ -13,6 +13,7 @@ class ListsController < ApplicationController
   end
 
   def index
+    puts "作成したキー #{ENV['SECRET_KEY']}"
     @lists = List.all
   end
 
